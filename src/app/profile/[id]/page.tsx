@@ -3,20 +3,7 @@ import connect from "@/dbConfig/dbconfig";
 import User from "@/models/UserModel";
 import { notFound } from "next/navigation";
 
-// interface Props {
-//   params: {
-//     id: string;
-//   };
-// }
-
-// interface CurrentUserFields {
-//   username: string;
-//   email: string;
-//   _id: string; // Note: MongoDB uses _id
-// }
-
-// Connect to database (outside component)
-
+// Ensure DB is connected outside component
 connect();
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -29,8 +16,6 @@ export default async function Page({ params }: { params: { id: string } }) {
       console.log("User not found");
       return notFound();
     }
-
-    console.log("Found user:", currentUser);
 
     return (
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
